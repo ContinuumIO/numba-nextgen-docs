@@ -151,3 +151,10 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+markdown:
+	pandoc -t markdown -s source/numbacore.rst >out.md
+	pandoc -t markdown -s source/fusion.rst >>out.md
+	pandoc -t markdown -s source/typing.rst >>out.md
+	pandoc -t markdown -s source/runtime.rst >>out.md
+	python github_markdown.py out.md
